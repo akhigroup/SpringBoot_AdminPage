@@ -81,7 +81,26 @@ public class ItemApiLogicService extends BaseService<ItemApiRequest, ItemApiResp
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
-    private Header<ItemApiResponse> response(Item  item) {
+    public Header<ItemApiResponse> response(Item  item) {
+//        String statsuTitle = item.getStatus().
+
+        ItemApiResponse body = ItemApiResponse.builder()
+                .id(item.getId())
+                .status(item.getStatus())
+                .title(item.getTitle())
+                .name(item.getName())
+                .price(item.getPrice())
+                .brandName(item.getBrandName())
+                .content(item.getContent())
+                .registeredAt(item.getRegisteredAt())
+                .unregisteredAt(item.getUnregisteredAt())
+                .partnerId(item.getPartner().getId())
+                .build();
+
+        return Header.OK(body);
+    }
+
+    public Header<ItemApiResponse> response2(Item  item) {
 //        String statsuTitle = item.getStatus().
 
         ItemApiResponse body = ItemApiResponse.builder()

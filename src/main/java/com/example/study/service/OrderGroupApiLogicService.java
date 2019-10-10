@@ -85,7 +85,25 @@ public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest,
 
     }
 
-    private Header<OrderGroupApiResponse> response(OrderGroup orderGroup) {
+    public Header<OrderGroupApiResponse> response(OrderGroup orderGroup) {
+        OrderGroupApiResponse body = OrderGroupApiResponse.builder()
+                .id(orderGroup.getId())
+                .status(orderGroup.getStatus())
+                .orderType(orderGroup.getOrderType())
+                .revAddress(orderGroup.getRevAddress())
+                .revName(orderGroup.getRevName())
+                .paymentType(orderGroup.getPaymentType())
+                .totalPrice(orderGroup.getTotalPrice())
+                .totalQuantity(orderGroup.getTotalQuantity())
+                .orderAt(orderGroup.getOrderAt())
+                .arrivalDate(orderGroup.getArrivalDate())
+                .userId(orderGroup.getId())
+                .build();
+        return Header.OK(body);
+    }
+
+
+    public Header<OrderGroupApiResponse> response2(OrderGroup orderGroup) {
         OrderGroupApiResponse body = OrderGroupApiResponse.builder()
                 .id(orderGroup.getId())
                 .status(orderGroup.getStatus())
